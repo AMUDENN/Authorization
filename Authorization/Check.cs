@@ -16,16 +16,21 @@ namespace Authorization
             MatchCollection matches = regex.Matches(password);
             Exception exceptions = null;
             string errors = null;
-            if(matches.Count != password.Length)
+            if (matches.Count != password.Length)
             {
                 errors += "Вводить можно только латиницу, цифры и нижнее подчёркивание!";
             }
-            if(password.Length > 20)
+            if (password.Length > 20)
             {
-                if (errors == null) errors += "\n";
-                errors +=  "Пароль не должен быть длиннее 20 символов!";
+                if (errors != null) errors += "\n";
+                errors += "Пароль не должен быть длиннее 20 символов!";
             }
-            if(errors != null) exceptions = new Exception(errors);
+            if (password.Length < 3)
+            {
+                if (errors != null) errors += "\n";
+                errors += "Пароль не должен быть короче 3 символов!";
+            }
+            if (errors != null) exceptions = new Exception(errors);
             return exceptions;
         }
         public static Exception CheckRegistrationLogin(string login)
@@ -41,22 +46,29 @@ namespace Authorization
                     errors += "Пользователь с таким логином уже существует!";
                 }
             }
-            if(matches.Count != login.Length)
+            if (matches.Count != login.Length)
             {
-                if (errors == null) errors += "\n";
+                if (errors != null) errors += "\n";
                 errors += "Вводить можно только латиницу, цифры и нижнее подчёркивание!";
+
             }
             if (login.Length > 20)
             {
-                if (errors == null) errors += "\n";
-                errors += "Пароль не должен быть длиннее 20 символов!";
+                if (errors != null) errors += "\n";
+                errors += "Логин не должен быть длиннее 20 символов!";
+
+            }
+            if (login.Length < 3)
+            {
+                if (errors != null) errors += "\n";
+                errors += "Логин не должен быть короче 3 символов!";
             }
             if (errors != null) exceptions = new Exception(errors);
             return exceptions;
         }
         public static Exception CheckLogInLogin(string login)
         {
-            string[] logins = File.ReadAllLines(@"..\..\Users.txt").Select(pair => pair.Substring(0, pair.IndexOf(':'))).ToArray();
+            string[] logins = File.ReadAllLines(@"..\..\Users.txt").Where(pair => pair.Length > 0).Select(pair => pair.Substring(0, pair.IndexOf(':'))).ToArray();
             MatchCollection matches = regex.Matches(login);
             Exception exceptions = null;
             string errors = null;
@@ -68,16 +80,21 @@ namespace Authorization
                     isAlreadyBeen = true;
                 }
             }
-            if (!isAlreadyBeen) errors += "Пользователя с таким ником не существует!"; 
+            if (!isAlreadyBeen) errors += "Пользователя с таким ником не существует!";
             if (matches.Count != login.Length)
             {
-                if (errors == null) errors += "\n";
+                if (errors != null) errors += "\n";
                 errors += "Вводить можно только латиницу, цифры и нижнее подчёркивание!";
             }
             if (login.Length > 20)
             {
-                if (errors == null) errors += "\n";
-                errors += "Пароль не должен быть длиннее 20 символов!";
+                if (errors != null) errors += "\n";
+                errors += "Логин не должен быть длиннее 20 символов!";
+            }
+            if (login.Length < 3)
+            {
+                if (errors != null) errors += "\n";
+                errors += "Логин не должен быть короче 3 символов!";
             }
             if (errors != null) exceptions = new Exception(errors);
             return exceptions;
@@ -90,7 +107,7 @@ namespace Authorization
             Exception confirmpasswordEx = CheckPassword(confirmpassword);
             if (passwordEx == null && confirmpasswordEx == null)
             {
-                if(password != confirmpassword)
+                if (password != confirmpassword)
                 {
                     errors += "Введённые пароли не совпадают";
                 }

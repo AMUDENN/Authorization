@@ -21,7 +21,7 @@ namespace Authorization
             {
                 foreach (string item in users)
                 {
-                    if(login == item.Substring(0, item.IndexOf(':')))
+                    if (item.Length > 0 && login == item.Substring(0, item.IndexOf(':')))
                     {
                         if (password == item.Substring(item.IndexOf(':') + 1)) return exceptions;
                     }
