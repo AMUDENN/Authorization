@@ -21,15 +21,19 @@ namespace Authorization.RegistrationPage
     /// </summary>
     public partial class Registration : Page
     {
+        public static string password;
+        public static string confirmpassword;
         public Registration()
         {
             InitializeComponent();
             MainWindow.ChangeTitle("Registration");
+            password = "";
+            confirmpassword = "";
         }
 
         private void RegistrationButton_Click(object sender, RoutedEventArgs e)
         {
-            Exception RegistrationEx = AuthorizationClass.Registration(LoginText.Text, PasswordText.Text, ConfirmPasswordText.Text);
+            Exception RegistrationEx = AuthorizationClass.Registration(LoginText.Text, password, confirmpassword);
             if (RegistrationEx == null)
             {
                 MainWindow.ContentPage(this);
@@ -43,6 +47,50 @@ namespace Authorization.RegistrationPage
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.LogInPage(this);
+        }
+        public void PasswordKeyPress(object sender, KeyEventArgs args)
+        {
+            if (args.Key == Key.Back && PasswordText.Text.Length > 0)
+            {
+                password = password.Substring(0, password.Length - 1);
+            }
+            if (args.Key == Key.Delete && PasswordText.Text.Length > 0)
+            {
+                password = password.Remove(PasswordText.SelectionStart, 1);
+            }
+            if (args.Key == Key.Enter)
+            {
+                args.Handled = true;
+            }
+        }
+        public void PasswordTextChanged(object sender, TextCompositionEventArgs args)
+        {
+            password += args.Text;
+            PasswordText.Text += '*';
+            args.Handled = true;
+            PasswordText.SelectionStart = PasswordText.Text.Length;
+        }
+        public void ConfirmPasswordKeyPress(object sender, KeyEventArgs args)
+        {
+            if (args.Key == Key.Back && ConfirmPasswordText.Text.Length > 0)
+            {
+                confirmpassword = confirmpassword.Substring(0, confirmpassword.Length - 1);
+            }
+            if (args.Key == Key.Delete && ConfirmPasswordText.Text.Length > 0)
+            {
+                confirmpassword = confirmpassword.Remove(ConfirmPasswordText.SelectionStart, 1);
+            }
+            if (args.Key == Key.Enter)
+            {
+                args.Handled = true;
+            }
+        }
+        public void ConfirmPasswordTextChanged(object sender, TextCompositionEventArgs args)
+        {
+            confirmpassword += args.Text;
+            ConfirmPasswordText.Text += '*';
+            args.Handled = true;
+            ConfirmPasswordText.SelectionStart = ConfirmPasswordText.Text.Length;
         }
     }
 }

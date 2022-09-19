@@ -12,6 +12,6 @@
         <Button x:Name="LogInButton" Click="LogInButton_Click" Style="{DynamicResource ButtonStyle}" Content="Войти" Width="200" Height="45" Margin="50,141,50,64" />
         <Button x:Name="RegistrationButton" Click="RegistrationButton_Click" Style="{DynamicResource ButtonStyle}" Content="Зарегистрироваться" Width="200" Height="45" Margin="50,191,50,14" />
         <TextBox Name="LoginText" Style="{DynamicResource TextBoxStyle}" Tag="Введите логин" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="30" Width="150" Margin="75,32,75,188" />
-        <TextBox Name="PasswordText" Style="{DynamicResource TextBoxStyle}" Tag="Введите пароль" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="30" Width="150" Margin="75,76,75,144" />
+        <TextBox Name="PasswordText" Style="{DynamicResource TextBoxStyle}" Tag="Введите пароль" PreviewTextInput="PasswordTextChanged" PreviewKeyDown="PasswordKeyPress" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="30" Width="150" Margin="75,76,75,144" />
     </Grid>
 </Page>

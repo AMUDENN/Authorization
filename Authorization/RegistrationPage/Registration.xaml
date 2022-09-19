@@ -12,8 +12,8 @@
         <Button x:Name="RegistrationButton" Click="RegistrationButton_Click" Style="{DynamicResource ButtonStyle}" Content="Зарегистрироваться" Width="200" Height="45" Margin="50,125,50,80" />
         <Button x:Name="ExitButton" Click="ExitButton_Click" Style="{DynamicResource ButtonStyle}" Content="Назад" Width="200" Height="45" Margin="50,191,50,14" />
         <TextBox Name="LoginText" Style="{DynamicResource TextBoxStyle}" Tag="Введите логин" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="30" Width="150" Margin="75,10,75,210" />
-        <TextBox Name="PasswordText" Style="{DynamicResource TextBoxStyle}" Tag="Введите пароль" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="30" Width="150" Margin="75,45,75,175" />
-        <TextBox Name="ConfirmPasswordText" Style="{DynamicResource TextBoxStyle}" Tag="Повторите пароль" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="30" Width="150" Margin="75,80,75,140" />
+        <TextBox Name="PasswordText" Style="{DynamicResource TextBoxStyle}" Tag="Введите пароль" PreviewTextInput="PasswordTextChanged" PreviewKeyDown="PasswordKeyPress" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="30" Width="150" Margin="75,45,75,175" />
+        <TextBox Name="ConfirmPasswordText" Style="{DynamicResource TextBoxStyle}" Tag="Повторите пароль" PreviewTextInput="ConfirmPasswordTextChanged" PreviewKeyDown="ConfirmPasswordKeyPress" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="30" Width="150" Margin="75,80,75,140" />
     </Grid>
 </Page>
 
