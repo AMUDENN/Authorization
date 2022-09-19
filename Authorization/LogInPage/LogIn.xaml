@@ -1,0 +1,17 @@
+﻿<Page x:Class="Authorization.LogInPage.LogIn"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Authorization.LogInPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="250" d:DesignWidth="400"
+      Title="LogIn">
+
+    <Grid>
+        <Button x:Name="LogInButton" Click="LogInButton_Click" Style="{DynamicResource ButtonStyle}" Content="Войти" Width="200" Height="45" Margin="50,141,50,64" />
+        <Button x:Name="RegistrationButton" Click="RegistrationButton_Click" Style="{DynamicResource ButtonStyle}" Content="Зарегистрироваться" Width="200" Height="45" Margin="50,191,50,14" />
+        <TextBox Name="LoginText" Style="{DynamicResource TextBoxStyle}" Tag="Введите логин" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="30" Width="150" Margin="75,32,75,188" />
+        <TextBox Name="PasswordText" Style="{DynamicResource TextBoxStyle}" Tag="Введите пароль" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Height="30" Width="150" Margin="75,76,75,144" />
+    </Grid>
+</Page>

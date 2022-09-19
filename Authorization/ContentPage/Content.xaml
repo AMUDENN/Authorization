@@ -1,0 +1,15 @@
+﻿<Page x:Class="Authorization.ContentPage.Content"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Authorization.ContentPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="250" d:DesignWidth="300"
+      Title="Content">
+
+    <Grid>
+        <Button x:Name="LogOutButton" Click="LogOutButton_Click" Style="{DynamicResource ButtonStyle}" Content="Выйти" Width="200" Height="45" Margin="50,191,50,14" />
+        <TextBlock Text="Вы успешко авторизовались!" FontSize="15" TextAlignment="Center" TextWrapping="Wrap" Height="50" Width="150" Margin="75,75,75,125"/>
+    </Grid>
+</Page>
